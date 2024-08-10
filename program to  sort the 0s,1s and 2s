@@ -1,5 +1,7 @@
-class Solution
-{
+
+//program is to sort the 0s ,1s  and 2s
+
+class Solution{
     public static void sort012(int a[], int n)
     {
   Arrays.sort(a);
