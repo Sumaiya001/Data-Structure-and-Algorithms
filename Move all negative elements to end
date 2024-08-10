@@ -1,0 +1,18 @@
+Move all negative elements to end 
+
+
+In an array the questions say to move the neagtive integers to the  one  end( at the end)
+
+Understanding :
+
+ step 1 :  So in an array there are both posiitve integers as well as negative integers. so will make two  different loops one to store postive integers and another to one to store negative integers.
+step 2 : using "TWO POINTER TECHNIQUE".
+step 3 : make an int n for the length of the array.
+         make  and integer J  to track the position array  whehre the next element  should be placed.
+         an temp array to  store the element in the desired order.
+step.4  //  main steps
+     1. search positive elements and then copy in the temp array.
+     2. again start from begining and search for negativ element.
+     3. copy now temp array to theh given (orginal) array.
+
+
