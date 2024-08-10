@@ -1,0 +1,15 @@
+class Solution {
+
+    public long kthElement(int k, int arr1[], int arr2[]) {
+       
+         int n1 = arr1.length;
+         int n2 =arr2.length;
+          int [] merged= new int[n1+n2];
+          System.arraycopy(arr1,0,merged,0 ,n1);
+          
+                    System.arraycopy(arr2,0,merged, n1 ,n2);
+                    Arrays.sort(merged);
+                    return merged[k-1];
+
+    }
+}
