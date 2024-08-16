@@ -1,0 +1,54 @@
+class Solution{
+   // Function for finding maximum and value pair
+
+    public static int lenOfLongSubarr (int A[], int N, int K) {
+        
+        int ans=0;
+        int sum=0;
+        HashMap<Integer,Integer> hm=new HashMap<>();
+        for(int i=0;i<N;i++){
+            sum+=A[i];
+            if(sum==K){
+                ans=Math.max(ans,i+1);
+            }
+            if(hm.containsKey(sum-K)){
+                ans=Math.max(ans,i-hm.get(sum-K));
+            }
+            if(!hm.containsKey(sum)){
+                hm.put(sum,i);
+            }
+        }
+        
+        return ans;
+    }
+
+
+
+
+
+Approach Summary:
+Prefix Sum Calculation:
+
+As you iterate through the array, maintain a running sum (prefix sum) of elements up to the current index.
+HashMap Storage:
+
+Use a HashMap (hm) to store the first occurrence of each prefix sum. The key is the prefix sum, and the value is the index where this sum first occurred.
+Checking Conditions:
+
+Direct Match: If the prefix sum equals K, the subarray from the start of the array to the current index has the desired sum.
+Subarray Sum: If the difference between the current prefix sum and K has been seen before (exists in the HashMap), a subarray with sum K exists between the index where that difference was first seen and the current index.
+Update Maximum Length:
+
+Track the length of these valid subarrays and update the maximum length found.
+Efficiency:
+
+This approach works in linear time, O(N), since each element is processed once and HashMap operations (insert, check) are O(1) on average.
+Key Idea:
+By using the prefix sum and storing sums in a HashMap, you efficiently find the longest subarray with a sum equal to K without needing to check every possible subarray explicitly.
+
+
+
+
+
+
+    
