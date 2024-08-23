@@ -1,0 +1,10 @@
+class Solution{
+    static int count(int N) 
+    { 
+      if(N==0){
+          return 0;
+      } 
+      return (N * (N - 1)) / 2;
+      // code hereI
+    }
+};
