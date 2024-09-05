@@ -1,0 +1,31 @@
+
+// find the  array dupllicates.
+
+
+class Solution {
+    public static ArrayList<Integer> duplicates(int[] arr) {
+//an array is given of integers as mentioned in  method
+
+//a new method is created to store the  result
+        ArrayList<Integer> result = new ArrayList<>();
+
+// freq array is  take of the size of the  array to count the frequencies
+        int[] freq = new int[arr.length];
+// a enhanced loop  i is used  to  iterate the array and add frequces of integer in the array
+        for(int i : arr){
+            freq[i]++;
+        }
+// while iterating from idx 0 to the  length if the freq of i is greater than 1 than addd into the result
+        for(int i = 0; i < freq.length; i++){
+            if(freq[i] > 1){
+                result.add(i);
+            }
+        }
+// if it is empty then adding -1 to the result
+        if(result.isEmpty()){
+            result.add(-1);
+        }
+// then finally returning result
+        return result;
+    }
+}
