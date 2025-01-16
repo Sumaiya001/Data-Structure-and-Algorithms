@@ -1,0 +1,23 @@
+#STRINGS
+
+code:  IN JAVA
+class Solution {
+    public ArrayList<ArrayList<String>> anagrams(String[] arr) {
+        // code here
+         HashMap<String,ArrayList<String>> map = new HashMap<>();
+         
+         for( String s :arr){
+             char[] array =s.toCharArray();
+             Arrays.sort(array);
+              String sortedstr = String.valueOf(array);
+              
+               if (!map.containsKey(sortedstr)){
+                   map.put(sortedstr,new ArrayList<>());
+               }
+               map.get(sortedstr).add(s);
+               
+         }
+         return new ArrayList<>(map.values());
+    }
+}
+
