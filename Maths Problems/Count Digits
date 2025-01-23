@@ -1,0 +1,17 @@
+code:
+class Solution {
+    static int evenlyDivides(int n) {
+        int count = 0;
+        int original = n;
+        n = Math.abs(n); // Handle negative numbers
+        
+        while (n != 0) {
+            int digit = n % 10; // Get the last digit
+            if (digit != 0 && original % digit == 0) { // Avoid division by zero
+                ++count;
+            }
+            n = n / 10; // Remove the last digit
+        }
+        return count;
+    }
+}
