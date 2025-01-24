@@ -1,0 +1,19 @@
+class Solution {
+    static boolean isPerfectNumber(int n) {
+        long sum = 0;  // Use long to handle large values
+
+        for (int i = 1; i <= Math.sqrt(n); i++) {  // Loop from 1 to sqrt(n)
+            if (n % i == 0) {  // If 'i' is a divisor
+                sum += i;  // Add the divisor
+
+                // Add the corresponding divisor (n / i) only if it's not the number itself
+                if (i != n / i && i != 1) {
+                    sum += n / i;
+                }
+            }
+        }
+        
+        return sum == n;  // Return true if sum equals the number
+    }
+
+}
