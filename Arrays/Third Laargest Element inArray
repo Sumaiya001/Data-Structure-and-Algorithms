@@ -1,0 +1,13 @@
+class Solution {
+    int thirdLargest(int arr[]) {
+        // Your code here
+         int n =arr.length;
+         if(n==0 || n<3){
+      throw new IllegalArgumentException("Array must have at least three elements.");
+
+         }
+        Arrays.sort(arr);
+       
+    return arr[n-3];
+    }
+}
