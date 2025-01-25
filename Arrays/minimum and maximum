@@ -1,0 +1,25 @@
+class Solution {
+    public Pair<Integer, Integer> getMinMax(int[] arr) {
+        // Check for edge cases
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array must not be null or empty");
+        }
+
+        // Initialize min and max with the first element
+        
+        int min = arr[0];
+        int max = arr[0];
+
+        // Traverse the array to find min and max
+        
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            } else if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+
+        // Return the result as a Pair
+        return new Pair<>(min, max);
+    }
