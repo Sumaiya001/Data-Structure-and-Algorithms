@@ -1,0 +1,24 @@
+
+class Solution {
+    public boolean isSubset(int a[], int b[]) {
+  
+
+
+        Set<Integer> set = new HashSet<>();
+        
+        // Insert all elements of array 'a' into the set
+        for (int num : a) {
+            set.add(num);
+        }
+        
+        // Check if all elements of array 'b' exist in the set
+        for (int num : b) {
+            if (!set.contains(num)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+}
