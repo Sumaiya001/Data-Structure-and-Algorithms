@@ -1,0 +1,42 @@
+class Solution {
+    public boolean twoSum(int arr[], int target) {
+        Arrays.sort(arr);
+         int left = 0;
+         int right= arr.length-1;
+         while(left<right){
+              int sum = arr[left]+arr[right];
+              if(sum == target){
+                  return true;
+              }
+              else if( sum<target){
+              left++;
+         }else {
+         right--;
+         }
+         }
+         return false;
+    }
+    
+}
+tc: n logn n
+sc =o(1)
+
+
+
+class Solution {
+    public boolean twoSum(int arr[], int target) {
+        HashSet<Integer> set = new HashSet<>();
+        
+        for (int num : arr) {
+            int complement = target - num;
+            if (set.contains(complement)) {
+                return true; // Pair found
+            }
+            set.add(num);
+        }
+        return false; // No pair found
+    }
+
+}
+ tc:o(n)
+ sc:o(n)
