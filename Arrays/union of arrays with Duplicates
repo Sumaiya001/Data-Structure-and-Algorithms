@@ -1,0 +1,15 @@
+class Solution {
+    public static int findUnion(int a[], int b[]) {
+        // code here
+    
+        HashSet<Integer> arr = new HashSet<>();
+        for( int i :a){
+            arr.add(i);
+        }
+        for( int i :b){
+            arr.add(i);
+        }
+         int result = arr.size();
+         return result;
+    }
+}
