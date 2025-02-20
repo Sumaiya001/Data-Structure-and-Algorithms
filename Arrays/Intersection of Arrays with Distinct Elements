@@ -1,0 +1,19 @@
+class Solution {
+    public static int numberofElementsInIntersection(int a[], int b[]) {
+        // Your code here
+        Set<Integer> first = new HashSet<>();
+        int count=0;
+        for(int num:a){
+            first.add(num);
+        }
+        for(int num:b){
+            
+            if(first.contains(num)){
+                count++;
+            }
+        }
+        return count;
+    }
+}
+TC: O(n+m)
+SC: o(n)
