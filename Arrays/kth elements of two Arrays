@@ -1,0 +1,14 @@
+class Solution {
+    public int kthElement(int a[], int b[], int k) {
+        int m=a.length,n=b.length;
+        int arr[]=new int[m+n];
+        for(int i=0;i<m;i++){
+            arr[i]=a[i];
+        }
+        for(int i=0;i<n;i++){
+            arr[m+i]=b[i];
+        }
+        Arrays.sort(arr);
+        return arr[k-1];
+    }
+}
