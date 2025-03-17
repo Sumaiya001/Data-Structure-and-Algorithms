@@ -1,0 +1,11 @@
+class Sol {
+    public static int search(int n, int arr[]) {
+        // your code here
+         int single = 0;
+         for( int i :arr){
+             single ^= i;
+             
+         }
+         return arr[i];
+    }
+}
