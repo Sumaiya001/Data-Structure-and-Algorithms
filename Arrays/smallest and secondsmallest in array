@@ -1,0 +1,10 @@
+class Solution {
+    public int[] minAnd2ndMin(int[] arr) {
+        int min = Integer.MAX_VALUE, secondMin = Integer.MAX_VALUE;
+        for (int num : arr) {
+            if (num < min) { secondMin = min; min = num; }
+            else if (num > min && num < secondMin) secondMin = num;
+        }
+        return secondMin == Integer.MAX_VALUE ? new int[]{-1, -1} : new int[]{min, secondMin};
+    }
+}
