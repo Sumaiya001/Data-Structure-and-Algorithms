@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        // Negative numbers are not palindromes
+        if (x < 0) {
+            return false;
+        }
+
+        int m = x;  // Store the original number
+        int rev = 0;  // To store the reversed number
+
+        // Reverse the number
+        while (m != 0) {
+            int digit = m % 10;         // Extract last digit
+            rev = rev * 10 + digit;     // Append digit to reversed number
+            m /= 10;                    // Remove last digit
+        }
+
+        // Check if the reversed number is equal to the original
+        return rev == x;
+    }
+}
