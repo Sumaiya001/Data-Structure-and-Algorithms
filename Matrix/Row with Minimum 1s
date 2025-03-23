@@ -1,0 +1,29 @@
+class Solution {
+    int minRow(int mat[][]) {
+        // Initialize variables
+        int minCount = Integer.MAX_VALUE;
+        int n = mat.length;
+        int m = mat[0].length;
+        int idx = -1;
+
+        // Traverse each row
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+
+            // Count number of 1s in the row
+            for (int j = 0; j < m; j++) {
+                if (mat[i][j] == 1) {
+                    count++;
+                }
+            }
+
+            // Update the minimum count and store the row index
+            if (count < minCount) {
+                minCount = count;
+                idx = i + 1; // Using 1-based indexing
+            }
+        }
+
+        return idx;
+    }
+}
