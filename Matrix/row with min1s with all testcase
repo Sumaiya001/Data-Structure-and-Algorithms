@@ -1,0 +1,32 @@
+class Solution {
+    int minRow(int mat[][]) {
+        int minCount = Integer.MAX_VALUE;
+        int minIdx = -1;
+        
+        for (int i = 0; i < mat.length; i++) {
+            int count = 0;
+            for (int j = 0; j < mat[i].length; j++) {
+                if (mat[i][j] == 1) {
+                    count++;
+                }
+            }
+            // Update if this row has fewer 1's than previous minimum.
+            if (count < minCount) {
+                minCount = count;
+                minIdx = i;
+            }
+        }
+        // Return 1-indexed row number
+        return (minIdx == -1) ? -1 : (minIdx + 1);
+    }
+    
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[][] mat = {
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0}
+        };
+        System.out.println("The row with the minimum number of 1's is: " + sol.minRow(mat));
+    }
+}
