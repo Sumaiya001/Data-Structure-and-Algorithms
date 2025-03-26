@@ -1,0 +1,20 @@
+class Solution {
+    static boolean searchInSorted(int arr[], int k) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        // Perform Binary Search
+        while (left <= right) {
+            int mid = left + (right - left) / 2; // Prevents overflow
+
+            if (arr[mid] == k) {
+                return true; // Element found
+            } else if (arr[mid] < k) {
+                left = mid + 1; // Search in the right half
+            } else {
+                right = mid - 1; // Search in the left half
+            }
+        }
+        return false; // Element not found
+    }
+}
