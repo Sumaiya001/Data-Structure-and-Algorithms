@@ -1,0 +1,18 @@
+class Solution {
+    public String removeDuplicates(String s) {
+        // Using LinkedHashSet to maintain order and remove duplicates
+        Set<Character> set = new LinkedHashSet<>();
+        
+        for (char c : s.toCharArray()) {
+            set.add(c);  // Add characters to set, removing duplicates
+        }
+        
+        // Convert set back to string
+        StringBuilder result = new StringBuilder();
+        for (char c : set) {
+            result.append(c);
+        }
+        
+        return result.toString();
+    }
+}
