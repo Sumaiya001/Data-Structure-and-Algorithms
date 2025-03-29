@@ -1,34 +1,27 @@
 
 class Solution {
     public int countMinReversals(String s) {
-        // If the length is odd, it's impossible to balance
+        // code here
+      
+        int open = 0, close = 0; // Counters for unbalanced braces
+
+        // If length is odd, balancing is impossible
         if (s.length() % 2 == 1) return -1;
 
-        Stack<Character> stack = new Stack<>();
-        int count = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-
+        for (char ch : s.toCharArray()) { // Loop through each character in the string
             if (ch == '{') {
-                stack.push(ch);
+                open++; // Count unbalanced '{'
             } else { // ch == '}'
-                if (!stack.isEmpty() && stack.peek() == '{') {
-                    stack.pop(); // Valid pair found, remove from stack
+                if (open > 0) {
+                    open--; // Cancel out a matching '{' (balanced pair found)
                 } else {
-                    stack.push(ch); // Push unbalanced '}'
+                    close++; // Count unbalanced '}'
                 }
             }
-        }
-
-        // Remaining stack contains only unbalanced brackets
-        int open = 0, close = 0;
-        while (!stack.isEmpty()) {
-            if (stack.pop() == '{') open++;
-            else close++;
         }
 
         // Minimum reversals needed
         return (open + 1) / 2 + (close + 1) / 2;
     }
 }
+      
