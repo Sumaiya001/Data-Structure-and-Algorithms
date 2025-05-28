@@ -1,0 +1,62 @@
+class Solution {
+
+    void mergeSort(int arr[], int l, int r) {
+        if (l < r) {
+            // Find the middle point
+            int mid = l + (r - l) / 2;
+
+            // Recursively sort the two halves
+            mergeSort(arr, l, mid);
+            mergeSort(arr, mid + 1, r);
+
+            // Merge the sorted halves
+            merge(arr, l, mid, r);
+        }
+    }
+
+    // Merges two subarrays of arr[]
+    void merge(int arr[], int l, int mid, int r) {
+        // Find sizes of two subarrays to be merged
+        int n1 = mid - l + 1;
+        int n2 = r - mid;
+
+        // Create temp arrays
+        int left[] = new int[n1];
+        int right[] = new int[n2];
+
+        // Copy data to temp arrays
+        for (int i = 0; i < n1; i++)
+            left[i] = arr[l + i];
+        for (int j = 0; j < n2; j++)
+            right[j] = arr[mid + 1 + j];
+
+        // Merge the temp arrays
+
+        int i = 0, j = 0;
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (left[i] <= right[j]) {
+                arr[k] = left[i];
+                i++;
+            } else {
+                arr[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy remaining elements of left[], if any
+        while (i < n1) {
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+
+        // Copy remaining elements of right[], if any
+        while (j < n2) {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+    }
+}
