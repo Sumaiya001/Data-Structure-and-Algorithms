@@ -1,0 +1,17 @@
+class Solution {
+    public static boolean isRotated(String s1, String s2) {
+        int len = s1.length();
+        
+        // Quick checks
+        if (len != s2.length()) return false;
+        if (len <= 2) return s1.equals(s2);
+
+        // Check 2-place clockwise rotation
+        String clockwise = s1.substring(len - 2) + s1.substring(0, len - 2);
+
+        // Check 2-place anti-clockwise rotation
+        String anticlockwise = s1.substring(2) + s1.substring(0, 2);
+
+        return s2.equals(clockwise) || s2.equals(anticlockwise);
+    }
+}
