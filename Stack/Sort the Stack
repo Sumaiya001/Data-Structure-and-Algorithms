@@ -1,0 +1,25 @@
+class GfG {
+    // Main function to sort the stack
+    public Stack<Integer> sort(Stack<Integer> s) {
+        if (!s.isEmpty()) {
+            int top = s.pop();         // Step 1: Pop the top element
+            sort(s);                   // Step 2: Sort the remaining stack
+            insertSorted(s, top);      // Step 3: Insert the element back in sorted order
+        }
+        return s;
+    }
+
+    // Helper function to insert element in sorted position
+    private void insertSorted(Stack<Integer> s, int element) {
+        // Base case: If stack is empty OR top is smaller, just push
+        if (s.isEmpty() || s.peek() <= element) {
+            s.push(element);
+            return;
+        }
+
+        // Otherwise, pop top and recur
+        int top = s.pop();
+        insertSorted(s, element);
+        s.push(top);  // Push back after recursive insert
+    }
+}
