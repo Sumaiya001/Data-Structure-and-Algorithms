@@ -1,0 +1,47 @@
+class Solution {
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+
+    // Constructor
+    public Solution() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    // Push element into the stack
+    public void push(int x) {
+        stack.push(x);
+
+        // Push into minStack only if it's the new minimum
+        if (minStack.isEmpty() || x <= minStack.peek()) {
+            minStack.push(x);
+        }
+    }
+
+    // Remove top element
+    public void pop() {
+        if (!stack.isEmpty()) {
+            int removed = stack.pop();
+            // Also pop from minStack if it was the minimum
+            if (removed == minStack.peek()) {
+                minStack.pop();
+            }
+        }
+    }
+
+    // Get top element
+    public int peek() {
+        if (!stack.isEmpty()) {
+            return stack.peek();
+        }
+        return -1; // Or throw exception
+    }
+
+    // Get the minimum element in O(1)
+    public int getMin() {
+        if (!minStack.isEmpty()) {
+            return minStack.peek();
+        }
+        return -1; // Or throw exception
+    }
+}
