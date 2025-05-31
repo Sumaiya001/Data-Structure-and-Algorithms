@@ -26,3 +26,15 @@ class MyStack {
         return arr[top--]; // Return top value and decrement top
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
