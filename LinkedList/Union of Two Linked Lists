@@ -1,0 +1,34 @@
+class Solution {
+    public static Node findUnion(Node head1, Node head2) {
+       
+         TreeSet<Integer> set = new TreeSet<>();
+
+        // Add elements from the first list
+        Node current = head1;
+        while (current != null) {
+            set.add(current.data);
+            current = current.next;
+        }
+
+        // Add elements from the second list
+        current = head2;
+        while (current != null) {
+            set.add(current.data);
+            current = current.next;
+        }
+
+        // Create new linked list from set
+        Node newHead = null, tail = null;
+        for (int val : set) {
+            Node newNode = new Node(val);
+            if (newHead == null) {
+                newHead = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = tail.next;
+            }
+        }
+
+        return newHead;
+    }
