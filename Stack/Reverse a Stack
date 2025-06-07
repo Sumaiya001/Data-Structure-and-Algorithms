@@ -1,0 +1,27 @@
+class Solution {
+    // Function to reverse the stack
+    static void reverse(Stack<Integer> s) {
+        if (s.isEmpty()) return;
+
+        // Step 1: Pop the top element
+        int top = s.pop();
+
+        // Step 2: Reverse the remaining stack
+        reverse(s);
+
+        // Step 3: Insert the popped element at the bottom
+        insertAtBottom(s, top);
+    }
+
+    // Helper function to insert element at the bottom of stack
+    static void insertAtBottom(Stack<Integer> s, int x) {
+        if (s.isEmpty()) {
+            s.push(x);
+            return;
+        }
+
+        int top = s.pop();
+        insertAtBottom(s, x);
+        s.push(top); // push back after inserting x at bottom
+    }
+}
