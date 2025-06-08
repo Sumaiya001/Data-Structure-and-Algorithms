@@ -1,0 +1,25 @@
+class Solution {
+    public int countMinReversals(String s) {
+        // code here
+      
+        int open = 0, close = 0; // Counters for unbalanced braces
+
+        // If length is odd, balancing is impossible
+        if (s.length() % 2 == 1) return -1;
+
+        for (char ch : s.toCharArray()) { // Loop through each character in the string
+            if (ch == '{') {
+                open++; // Count unbalanced '{'
+            } else { // ch == '}'
+                if (open > 0) {
+                    open--; // Cancel out a matching '{' (balanced pair found)
+                } else {
+                    close++; // Count unbalanced '}'
+                }
+            }
+        }
+
+        // Minimum reversals needed
+        return (open + 1) / 2 + (close + 1) / 2;
+    }
+}
