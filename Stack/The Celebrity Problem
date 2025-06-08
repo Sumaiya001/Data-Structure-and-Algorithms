@@ -1,0 +1,38 @@
+class Solution {
+    public int celebrity(int mat[][]) {
+        // code here
+         int n = mat.length;
+         Stack<Integer> stack = new Stack<>();
+         // Step 1: Push all people onto the stack
+         for( int i=0;i<n;i++){
+             stack.push(i);
+         }
+         // Step 2: Eliminate non-celebrities
+         while(stack.size()>1){
+              int A =stack.pop();
+              int B= stack.pop();
+               if (mat[A][B] == 1) {
+                // A knows B → A is not a celebrity
+                stack.push(B);
+            } else {
+                // A doesn't know B → B is not a celebrity
+                stack.push(A);
+            } 
+    }
+         // Potential celebrity
+        int candidate = stack.pop();
+
+        // Step 3: Verify the candidate
+        for (int i = 0; i < n; i++) {
+            if (i != candidate) {
+                // Candidate should know no one and everyone should know candidate
+                if (mat[candidate][i] == 1 || mat[i][candidate] == 0) {
+                    return -1;
+                }
+            }
+        }
+
+        return candidate;
+    }
+}
+   
