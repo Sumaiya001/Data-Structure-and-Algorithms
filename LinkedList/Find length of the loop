@@ -1,0 +1,28 @@
+class Solution {
+    public int countNodesinLoop(Node head) {
+        Node slow = head, fast = head;
+
+        // Detect the loop using Floyd's Cycle-Finding Algorithm
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                break; // Loop detected
+            }
+        }
+
+        // If no loop is detected, return 0
+        if (fast == null || fast.next == null) {
+            return 0;
+        }
+
+        // Count the number of nodes in the loop
+        int count = 1;
+        Node current = slow;
+        while (current.next != slow) {
+            current = current.next;
+            count++;
+        }
+        return count;
+    }
+}
