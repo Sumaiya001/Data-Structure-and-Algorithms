@@ -1,0 +1,31 @@
+lass Solution {
+    public static Node findFirstNode(Node head) {
+        Node slow = head, fast = head;
+
+        // Step 1: Detect loop using Floyd's Cycle Detection
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {  // Loop detected
+                break;
+            }
+        }
+
+        // Step 2: Check if no loop was found
+        if (fast == null || fast.next == null) {
+            return null; // No loop
+        }
+
+        // Step 3: Move slow to head. Keep fast at meeting point.
+        // Both now move one step at a time.
+        slow = head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // Both meet at the starting node of the loop
+        return slow;
+    }
+}
