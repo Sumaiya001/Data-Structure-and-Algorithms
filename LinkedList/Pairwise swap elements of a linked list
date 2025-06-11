@@ -1,0 +1,17 @@
+class Solution {
+    // Function to pairwise swap elements of a linked list by swapping data
+    public Node pairwiseSwap(Node head) {
+        Node temp = head;
+
+        while (temp != null && temp.next != null) {
+            // Swap data
+            int k = temp.data;
+            temp.data = temp.next.data;
+            temp.next.data = k;
+
+            // Move ahead by 2
+            temp = temp.next.next;
+        }
+        return head;
+    }
+}
