@@ -1,0 +1,39 @@
+
+
+class Solution {
+    Node divide(Node head) {
+        // code here
+        Node evenStart = null , evenEnd = null;
+        Node oddStart = null,oddEnd= null;
+        Node curr = head;
+        while(curr!= null){
+            if (curr.data % 2 == 0) {
+                if (evenStart == null) {
+                    evenStart = evenEnd = curr;
+                } else {
+                    evenEnd.next = curr;
+                    evenEnd = evenEnd.next;
+                }
+            } else {
+                if (oddStart == null) {
+                    oddStart = oddEnd = curr;
+                } else {
+                    oddEnd.next = curr;
+                    oddEnd = oddEnd.next;
+                }
+            }
+            curr =curr.next;
+        }
+             if (evenStart == null) return oddStart;
+
+
+        // Combine even and odd lists
+        evenEnd.next = oddStart;
+
+        // Important: set the end of final list to null
+        if (oddEnd != null) oddEnd.next = null;
+
+        return evenStart;
+    }
+}
+   
