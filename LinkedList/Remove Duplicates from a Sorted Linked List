@@ -1,0 +1,18 @@
+class Solution {
+    // Function to remove duplicates from sorted linked list.
+    Node removeDuplicates(Node head) {
+        Node curr = head;
+
+        // Traverse until the second last node
+        while (curr != null && curr.next != null) {
+            if (curr.data == curr.next.data) {
+                // Skip the duplicate node
+                curr.next = curr.next.next;
+            } else {
+                // Move to next unique element
+                curr = curr.next;
+            }
+        }
+        return head;
+    }
+}
