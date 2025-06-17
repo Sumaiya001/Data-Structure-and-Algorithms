@@ -1,0 +1,32 @@
+class Solution {
+    public static void linkdelete(Node head, int M, int N) {
+        if (head == null || M == 0) {
+            head = null;
+            return;
+        }
+
+        Node current = head;
+
+        while (current != null) {
+            // Step 1: Skip M-1 nodes
+            for (int i = 1; i < M && current != null; i++) {
+                current = current.next;
+            }
+
+            // If end reached during skipping
+            if (current == null || current.next == null) break;
+
+            // Step 2: Start deleting N nodes
+            Node temp = current.next;
+            for (int i = 1; i <= N && temp != null; i++) {
+                temp = temp.next;
+            }
+
+            // Step 3: Link current to the next valid node
+            current.next = temp;
+
+            // Step 4: Continue the loop
+            current = temp;
+        }
+    }
+}
