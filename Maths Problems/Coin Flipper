@@ -1,0 +1,12 @@
+
+public class CoinFlipper {
+    // Returns expected number of heads in N flips
+    public static int expectedHeads(int flips) {
+        return flips / 2; // integer division
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Expected Heads (10 flips): " + expectedHeads(10)); // 5
+        System.out.println("Expected Heads (7 flips): " + expectedHeads(7));   // 3
+    }
+}
