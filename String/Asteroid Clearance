@@ -1,0 +1,23 @@
+public class AsteroidClearance {
+    public static String clearAsteroids(String s) {
+        boolean[] remove = new boolean[s.length()];
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '*') {
+                remove[i] = true;
+                if (i > 0) remove[i - 1] = true;
+                if (i < s.length() - 1) remove[i + 1] = true;
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (!remove[i]) {
+                result.append(s.charAt(i));
+            }
+        }
+
+        return result.toString();
+    }
+
+    
